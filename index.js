@@ -45,7 +45,7 @@ const gameStart = () => {
   moves = 0;
 };
 
-// Loop over existing cards and display shuffled cards
+// ####### Loop over existing cards and display shuffled cards #####
 
 const shuffledCards = () => {
   for (let i = 0; i < cards.length; i++) {
@@ -56,3 +56,54 @@ const shuffledCards = () => {
     }
   }
 };
+//##### Move counter functionality ####
+
+const movesDisplay = () => {
+  if (moves > 8) {
+    stars[4].classList.add("hidden");
+  }
+  if (moves > 12) {
+    stars[3].classList.add("hidden");
+  }
+  if (moves > 16) {
+    stars[2].classList.add("hidden");
+  }
+  if (moves > 20) {
+    stars[1].classList.add("hidden");
+  }
+};
+
+// ####Reset current game####
+
+resetButton.addEventListener("click", gameReset);
+const gameReset = () => {
+  window.location = window.location;
+};
+
+// ####Loop to add eventListeners to all cards####
+
+for (let card of cards) {
+  card.addEventListener("click", turnOver);
+}
+
+// ####Turn card over and display icon####
+
+const turnOver = () => {
+  // Timer starts on first move
+  if (moves == 0) {
+    timeInterval();
+  }
+  moves++;
+  movesDisplay();
+  moveCounter.innerHTML = moves;
+  if (openCards.length < 2) {
+    this.classList.add("open", "show", "unclick");
+    openCards.push(this);
+  }
+  //######### Show cards in open array for 1 sec if there are two cards######
+
+  if (openCards === 2) {
+    cardMatches();
+  }
+};
+// ###Check for matches ####
