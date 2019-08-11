@@ -36,3 +36,23 @@ const closeButton = document.querySelector("#close-button");
 let totalStarCounter = 0;
 
 document.onLoad = gameStart();
+
+// ######Function to start game######
+
+const gameStart = () => {
+  shuffle(cards);
+  shuffledCards();
+  moves = 0;
+};
+
+// Loop over existing cards and display shuffled cards
+
+const shuffledCards = () => {
+  for (let i = 0; i < cards.length; i++) {
+    cardList.innerHTML = "";
+    // display shuffled cards
+    for (let card of cards) {
+      cardList.appendChild(card);
+    }
+  }
+};
