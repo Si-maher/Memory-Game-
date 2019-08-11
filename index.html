@@ -49,6 +49,138 @@
   </head>
 
   <body>
+    <!-- ##################################### -->
+    <!-- ##HEADER## -->
+    <!-- ########################################## -->
+
+    <div class="wrapper">
+      <main>
+        <header class="title">
+          <h1>Test Your memory!</h1>
+        </header>
+
+        <!-- ############################################## -->
+        <!-- ##INFO SECTION##  -->
+        <!-- ##############################################  -->
+
+        <section class="info-area">
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <!-- ################################  -->
+          <div class="timer">
+            Game duration-
+            <span id="minutes">00</span>
+            <span id="seconds">00</span>
+          </div>
+          <!-- #####################################  -->
+
+          <div class="moves">
+            Number of moves:
+            <span class="move-counter">0</span>
+          </div>
+          <!-- ##############################  -->
+
+          <!-- ####Pop up on hoover####  -->
+          <div class="reset tooltip">
+            <i class="fas fa-retweet">
+              <span class="tip-text">Reset the current game!</span>
+            </i>
+          </div>
+        </section>
+
+        <!-- #####################################  -->
+        <!-- ###Play area###  -->
+        <!-- #####################################  -->
+
+        <section class="play-area">
+          <div class="play-wrapper">
+            <ul class="cards-list">
+              <div class="cards-wrapper">
+                <li class="card helicopter">
+                  <i class="icon fas fa-helicopter"></i>
+                </li>
+                <li class="card peace">
+                  <i class="icon fab fa-angellist"></i>
+                </li>
+                <li class="card poop">
+                  <i class="icon fas fa-poo"></i>
+                </li>
+                <li class="card frog">
+                  <i class="icon fas fa-frog"></i>
+                </li>
+                <li class="card monster">
+                  <i class="icon fab fa-optin-monster"></i>
+                </li>
+                <li class="card bird">
+                  <i class="icon fab fa-earlybirds"></i>
+                </li>
+                <li class="card poop">
+                  <i class="icon fas fa-poo"></i>
+                </li>
+                <li class="card chess">
+                  <i class="icon fas fa-chess-knight"></i>
+                </li>
+                <li class="card chess">
+                  <i class="icon fas fa-chess-knight"></i>
+                </li>
+                <li class="card jet">
+                  <i class="icon fas fa-fighter-jet"></i>
+                </li>
+                <li class="card monster">
+                  <i class="icon fab fa-optin-monster"></i>
+                </li>
+                <li class="card chess">
+                  <i class="icon fas fa-chess-knight"></i>
+                </li>
+                <li class="card jet">
+                  <i class="icon fas fa-fighter-jet"></i>
+                </li>
+                <li class="card bird">
+                  <i class="icon fab fa-earlybirds"></i>
+                </li>
+                <li class="card helicopter">
+                  <i class="icon fas fa-helicopter"></i>
+                </li>
+                <li class="card frog">
+                  <i class="icon fas fa-frog"></i>
+                </li>
+                <li class="card peace">
+                  <i class="icon fab fa-angellist"></i>
+                </li>
+              </div>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ########################################  -->
+        <!-- #####modal######  -->
+        <!-- ########################################  -->
+
+        <div class="modal">
+          <div class="modal-content">
+            <span id="close-button">X</span>
+            <h1>Congratulations</h1>
+            <p>You have succesfully matched all the cards and WON!</p>
+            <p class="info">
+              It took <span id="total-moves"></span> moves, with a time of
+              <span id="time"></span> and you earned
+              <span id="start-raing"></span>
+            </p>
+            <p>Would you like to play again?</p>
+            <button id="new-game">Yes</button>
+          </div>
+        </div>
+        <!-- ############################################  -->
+        <!-- ######Footer######  -->
+        <!-- ############################################  -->
+      </main>
+    </div>
+
     <script src="index.js"></script>
   </body>
 </html>
