@@ -107,3 +107,88 @@ const turnOver = () => {
   }
 };
 // ###Check for matches ####
+
+const cardMatches = () => {
+  setTimeout(function() {
+    if (openCards[0].innerHTML === openCards[1].innerHTML) {
+      openCards[0].classList.add("match");
+      openCards[1].classList.add("match");
+      matchedCards.push(openCards[0]);
+      matchedCards.push(openCards[1]);
+    } else {
+      openCards[0].classList.remove("open", "show", "unclick");
+      openCards[1].classList.remove("open", "show", "unclick");
+    }
+    // #####Winning game logic###
+    if (matchedCards.length == 16) {
+      winGame();
+    }
+    // ### Clears the open cards to check the next two ###
+
+    openCards = [];
+  }, 500);
+};
+// #### Shuffle function #####
+
+const shuffle = array => {
+  let currentIndex = array.length;
+  temporaryValue;
+  randomIndex;
+
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+};
+// ###### Timer functionality ####
+
+const timeInterval = () => {
+  interval = setInterval(timer, 1000);
+};
+
+const timer = () => {
+  totalSeconds++;
+  seconds.innerHTML = pad(totalSeconds % 60);
+  minutes.innerHTML = pad(parseInt(totalSeconds / 60));
+};
+
+const pad = val => {
+  let valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+};
+// #### Wining the game invokes this function ####
+
+const winGame = () => {
+  clearInterval(interval);
+  if (matchedCards.length == 16) {
+    modal.style.display = "block";
+    totalMoves.innerHTML = moves;
+    gameTime.innerHTML = minutes.innerHTML + ":" + seconds.innerHTML;
+    stars.forEach(function(star) {
+      if (!star.classList.contains("hidden")) {
+        totalStarCounter++;
+        starRating.innerHTML = totalStarCounter + "stars.";
+      } else if (totalStarCounter == 1) {
+        starRating.innerHTML = totalStarCounter + "star.";
+      }
+    });
+  }
+};
+
+// ##### Clicking th play button on the modal starts a new game ###
+
+newGameButton.addEventListener("click", function() {
+  window.location = window.location;
+});
+
+closeButton.addEventListener("click", function() {
+  modal.style.display = "none";
+});
