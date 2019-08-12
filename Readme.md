@@ -4,7 +4,7 @@ This memory game app was created using JavaScript, CSS and HTML. The player choo
 
 # Preview
 
-![Memory game -Preview](.Capture.PNG)
+![Memory game -Preview](./Capture.PNG)
 
 # Author
 
