@@ -35,19 +35,18 @@ const starRating = document.querySelector("#star-rating");
 const closeButton = document.querySelector("#close-button");
 let totalStarCounter = 0;
 
-document.onLoad = gameStart();
-
 // ######Function to start game######
 
-const gameStart = () => {
+function gameStart() {
   shuffle(cards);
   shuffledCards();
   moves = 0;
-};
+}
+document.onLoad = gameStart();
 
 // ####### Loop over existing cards and display shuffled cards #####
 
-const shuffledCards = () => {
+function shuffledCards() {
   for (let i = 0; i < cards.length; i++) {
     cardList.innerHTML = "";
     // display shuffled cards
@@ -55,10 +54,10 @@ const shuffledCards = () => {
       cardList.appendChild(card);
     }
   }
-};
+}
 //##### Move counter functionality ####
 
-const movesDisplay = () => {
+function movesDisplay() {
   if (moves > 8) {
     stars[4].classList.add("hidden");
   }
@@ -68,17 +67,17 @@ const movesDisplay = () => {
   if (moves > 16) {
     stars[2].classList.add("hidden");
   }
-  if (moves > 20) {
+  if (moves === 20) {
     stars[1].classList.add("hidden");
   }
-};
+}
 
 // ####Reset current game####
 
 resetButton.addEventListener("click", gameReset);
-const gameReset = () => {
+function gameReset() {
   window.location = window.location;
-};
+}
 
 // ####Loop to add eventListeners to all cards####
 
@@ -88,7 +87,7 @@ for (let card of cards) {
 
 // ####Turn card over and display icon####
 
-const turnOver = () => {
+function turnOver() {
   // Timer starts on first move
   if (moves == 0) {
     timeInterval();
@@ -102,13 +101,13 @@ const turnOver = () => {
   }
   //######### Show cards in open array for 1 sec if there are two cards######
 
-  if (openCards === 2) {
+  if (openCards.length === 2) {
     cardMatches();
   }
-};
+}
 // ###Check for matches ####
 
-const cardMatches = () => {
+function cardMatches() {
   setTimeout(function() {
     if (openCards[0].innerHTML === openCards[1].innerHTML) {
       openCards[0].classList.add("match");
@@ -127,13 +126,13 @@ const cardMatches = () => {
 
     openCards = [];
   }, 500);
-};
+}
 // #### Shuffle function #####
 
-const shuffle = array => {
-  let currentIndex = array.length;
-  temporaryValue;
-  randomIndex;
+function shuffle(array) {
+  let currentIndex = array.length,
+    temporaryValue,
+    randomIndex;
 
   while (currentIndex !== 0) {
     randomIndex = Math.floor(Math.random() * currentIndex);
@@ -143,30 +142,30 @@ const shuffle = array => {
     array[randomIndex] = temporaryValue;
   }
   return array;
-};
+}
 // ###### Timer functionality ####
 
-const timeInterval = () => {
+function timeInterval() {
   interval = setInterval(timer, 1000);
-};
+}
 
-const timer = () => {
+function timer() {
   totalSeconds++;
   seconds.innerHTML = pad(totalSeconds % 60);
   minutes.innerHTML = pad(parseInt(totalSeconds / 60));
-};
+}
 
-const pad = val => {
+function pad(val) {
   let valString = val + "";
   if (valString.length < 2) {
     return "0" + valString;
   } else {
     return valString;
   }
-};
+}
 // #### Wining the game invokes this function ####
 
-const winGame = () => {
+function winGame() {
   clearInterval(interval);
   if (matchedCards.length == 16) {
     modal.style.display = "block";
@@ -181,7 +180,7 @@ const winGame = () => {
       }
     });
   }
-};
+}
 
 // ##### Clicking th play button on the modal starts a new game ###
 
