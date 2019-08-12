@@ -182,7 +182,7 @@ function winGame() {
   }
 }
 
-// ##### Clicking th play button on the modal starts a new game ###
+// ##### Clicking the play button on the modal starts a new game ###
 
 newGameButton.addEventListener("click", function() {
   window.location = window.location;
